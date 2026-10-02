@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arpita Pandey — Software Engineer | Full-Stack &amp; AI</title>
+    <meta name="description" content="Arpita Pandey — Software Engineer building full-stack and AI-powered applications with React, Next.js, FastAPI, Node.js, Azure OpenAI and Databricks.">
+    <meta name="theme-color" content="#05060f">
+    <!-- Apply saved/system theme before paint to avoid a flash -->
+    <script>
+        (function () {
+            var t;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+    <!-- Boot loader -->
+    <div class="loader" id="loader" aria-hidden="true">
+        <div class="loader-core"></div>
+        <div class="loader-text mono">initializing<span class="loader-dots"></span></div>
+    </div>
+
+    <!-- 3D background -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+
+    <!-- Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="nav" id="nav">
+        <a href="#home" class="nav-logo" aria-label="Home">
+            <span class="logo-mark">AP</span>
+            <span class="logo-text">arpita<span class="accent">.dev</span></span>
+        </a>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact" class="nav-cta">Let's talk</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Side section navigator -->
+    <nav class="dot-nav" id="dot-nav" aria-label="Section navigation">
+        <a href="#home" data-label="Home" aria-label="Home"></a>
+        <a href="#about" data-label="About" aria-label="About"></a>
+        <a href="#experience" data-label="Experience" aria-label="Experience"></a>
+        <a href="#work" data-label="Work" aria-label="Work"></a>
+        <a href="#skills" data-label="Skills" aria-label="Skills"></a>
+        <a href="#achievements" data-label="Achievements" aria-label="Achievements"></a>
+        <a href="#contact" data-label="Contact" aria-label="Contact"></a>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="home" data-scene="core">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <div class="status-pill reveal">
+                        <span class="pulse"></span>
+                        Open to Software Engineering opportunities
+                    </div>
+                    <h1 class="hero-title reveal">
+                        <span class="hero-hi">Hi, I'm</span>
+                        <span class="hero-name glitch" data-text="Arpita Pandey">Arpita Pandey</span>
+                    </h1>
+                    <p class="hero-role reveal mono">
+                        <span class="role-prefix">&gt;</span>
+                        <span id="role-typer"></span><span class="caret">_</span>
+                    </p>
+                    <p class="hero-desc reveal">
+                        Software Engineer building <strong>full-stack</strong> &amp; <strong>AI-powered</strong> applications.
+                        CSE Honors student specializing in AI, shipping enterprise apps with React, Next.js,
+                        FastAPI, Azure OpenAI and Databricks.
+                    </p>
+                    <div class="hero-ctas reveal">
+                        <a href="#work" class="btn btn-primary magnetic"><span>View my work</span><i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="Arpita_Pandey_Resume.pdf" class="btn btn-ghost magnetic" download><i class="fa-solid fa-file-arrow-down"></i><span>Resume</span></a>
+                    </div>
+                    <div class="hero-socials reveal">
+                        <a href="https://github.com/arpita-devlops" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/arpita-pandey-1a38132a7/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="mailto:pandeyarpita371@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="hero-hud reveal" aria-hidden="true">
+                    <div class="hud-card hud-1">
+                        <span class="hud-label mono">ai</span>
+                        <span class="hud-value">llms · agentic workflows</span>
+                    </div>
+                    <div class="hud-card hud-2">
+                        <span class="hud-label mono">status</span>
+                        <span class="hud-value"><i class="fa-solid fa-circle ok"></i> shipping to prod</span>
+                    </div>
+                    <div class="hud-card hud-3">
+                        <span class="hud-label mono">stack</span>
+                        <span class="hud-value">react → python api → sql</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-stats container">
+                <div class="stat reveal"><span class="stat-num" data-count="9.86" data-decimals="2">0</span><span class="stat-label">CGPA / 10</span></div>
+                <div class="stat reveal"><span class="stat-num" data-count="1400" data-suffix="+">0</span><span class="stat-label">Codeforces rating</span></div>
+                <div class="stat reveal"><span class="stat-num" data-count="500" data-suffix="+">0</span><span class="stat-label">DSA problems solved</span></div>
+                <div class="stat reveal"><span class="stat-num" data-count="0.5" data-decimals="1" data-prefix="Top " data-suffix="%">0</span><span class="stat-label">Flipkart GRiD 7.0</span></div>
+            </div>
+
+            <a href="#about" class="scroll-hint" aria-label="Scroll down">
+                <span class="mouse"><span class="wheel"></span></span>
+                <span class="mono">scroll</span>
+            </a>
+        </section>
+
+        <!-- MARQUEE -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>React</span><i>✦</i><span>Next.js</span><i>✦</i><span>TypeScript</span><i>✦</i><span>FastAPI</span><i>✦</i>
+                <span>Node.js</span><i>✦</i><span>Azure OpenAI</span><i>✦</i><span>LangGraph</span><i>✦</i><span>Databricks</span><i>✦</i>
+                <span>PostgreSQL</span><i>✦</i><span>MongoDB</span><i>✦</i><span>Docker</span><i>✦</i><span>C++</span><i>✦</i>
+                <span>React</span><i>✦</i><span>Next.js</span><i>✦</i><span>TypeScript</span><i>✦</i><span>FastAPI</span><i>✦</i>
+                <span>Node.js</span><i>✦</i><span>Azure OpenAI</span><i>✦</i><span>LangGraph</span><i>✦</i><span>Databricks</span><i>✦</i>
+                <span>PostgreSQL</span><i>✦</i><span>MongoDB</span><i>✦</i><span>Docker</span><i>✦</i><span>C++</span><i>✦</i>
+            </div>
+        </div>
+
+        <!-- ABOUT -->
+        <section class="section" id="about" data-scene="knot">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-index mono">01</span>
+                    <h2 class="section-title">About <span class="grad">me</span></h2>
+                </div>
+                <div class="about-grid">
+                    <div class="about-photo reveal tilt">
+                        <div class="photo-frame">
+                            <img src="media.jpg" alt="Portrait of Arpita Pandey" width="1000" height="1180" loading="lazy">
+                        </div>
+                        <div class="photo-badge glass">
+                            <i class="fa-solid fa-location-dot"></i> India
+                        </div>
+                        <div class="photo-badge-2 glass mono">
+                            <span class="pulse"></span> building w/ AI
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <p class="lead reveal">
+                            I build software that turns complex data and AI capabilities into
+                            <span class="grad">products people actually use.</span>
+                        </p>
+                        <p class="reveal">
+                            I'm a final-year Computer Science and Engineering student at <strong>KL University Hyderabad</strong>,
+                            specializing in Artificial Intelligence, with a strong interest in software engineering,
+                            full-stack development and AI-powered systems.
+                        </p>
+                        <p class="reveal">
+                            I enjoy working across the stack — from responsive React interfaces and REST APIs to AI workflows,
+                            data pipelines, authentication and cloud deployments. At <strong>Cummins</strong>, I contribute to
+                            enterprise AI applications end-to-end — frontend, APIs, LLM workflows and cloud deployment.
+                        </p>
+                        <div class="about-facts reveal">
+                            <div class="fact glass"><i class="fa-solid fa-graduation-cap"></i><div><strong>B.Tech CSE (Hons.)</strong><span>AI specialization</span></div></div>
+                            <div class="fact glass"><i class="fa-solid fa-briefcase"></i><div><strong>SDE Intern</strong><span>Cummins · AI Team</span></div></div>
+                            <div class="fact glass"><i class="fa-solid fa-palette"></i><div><strong>Off-screen</strong><span>Bharatanatyam · sketching</span></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What I build -->
+                <div class="build-grid">
+                    <article class="build-card glass spotlight tilt reveal">
+                        <div class="build-icon"><i class="fa-solid fa-brain"></i></div>
+                        <h3>AI Applications</h3>
+                        <p>LLM-powered apps, AI workflows, prompt engineering and agentic systems with LangGraph &amp; Azure OpenAI.</p>
+                    </article>
+                    <article class="build-card glass spotlight tilt reveal">
+                        <div class="build-icon"><i class="fa-solid fa-layer-group"></i></div>
+                        <h3>Full-Stack Systems</h3>
+                        <p>Responsive frontends, REST APIs, authentication, databases and enterprise workflows end-to-end.</p>
+                    </article>
+                    <article class="build-card glass spotlight tilt reveal">
+                        <div class="build-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                        <h3>Cloud &amp; Deployment</h3>
+                        <p>Containerized services, Databricks Apps, CI/CD and production-oriented, modular deployments.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="section" id="experience" data-scene="helix">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-index mono">02</span>
+                    <h2 class="section-title">Experience</h2>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-line"><span class="timeline-fill"></span></div>
+                    <article class="exp-card glass spotlight reveal">
+                        <div class="exp-node"></div>
+                        <div class="exp-head">
+                            <div>
+                                <h3>Software Developer Intern <span class="muted">— AI Team</span></h3>
+                                <p class="exp-company"><i class="fa-solid fa-building"></i> Cummins India</p>
+                            </div>
+                            <div class="exp-meta mono">
+                                <span>Jun 2026 — Present</span>
+                                <span><i class="fa-solid fa-location-dot"></i> Pune, India</span>
+                            </div>
+                        </div>
+                        <ul class="exp-list">
+                            <li>Contribute to an internal <strong>AI-powered analytics application</strong> that turns business data into actionable insights for enterprise users.</li>
+                            <li>Build frontend features with <strong>React / Next.js</strong> and the <strong>Python REST API</strong> endpoints that power them.</li>
+                            <li>Integrate <strong>LLM-based, multi-step agent workflows</strong> to automate insight and summary generation.</li>
+                            <li>Work on <strong>enterprise SSO</strong> integration and <strong>cloud deployment</strong> of an independently deployable frontend and backend.</li>
+                        </ul>
+                        <div class="exp-metrics">
+                            <div class="metric"><span class="metric-num text">End-to-end</span><span>UI → API → AI → deploy</span></div>
+                            <div class="metric"><span class="metric-num text">Agentic</span><span>multi-step LLM workflows</span></div>
+                            <div class="metric"><span class="metric-num text">Prod-ready</span><span>modular cloud deployment</span></div>
+                        </div>
+                        <div class="chips">
+                            <span>React</span><span>Next.js</span><span>TypeScript</span><span>Python</span><span>REST APIs</span><span>LLMs</span><span>AI Agents</span><span>SQL</span><span>Cloud</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Engineering approach -->
+                <div class="approach reveal">
+                    <h3 class="sub-title mono">// how I work</h3>
+                    <div class="approach-steps">
+                        <div class="approach-line"><span></span></div>
+                        <div class="step">
+                            <div class="step-orb"><i class="fa-solid fa-hammer"></i></div>
+                            <h4>Build</h4>
+                            <p>Responsive interfaces and modular backend services.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-orb"><i class="fa-solid fa-plug"></i></div>
+                            <h4>Integrate</h4>
+                            <p>APIs, databases, auth, AI models and enterprise services.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-orb"><i class="fa-solid fa-vial-circle-check"></i></div>
+                            <h4>Validate</h4>
+                            <p>Debug API failures, CORS / auth issues and app behaviour.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-orb"><i class="fa-solid fa-rocket"></i></div>
+                            <h4>Deploy</h4>
+                            <p>Containerize and ship to cloud &amp; data platforms like Databricks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED WORK -->
+        <section class="section" id="work" data-scene="wave">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-index mono">03</span>
+                    <h2 class="section-title">Featured <span class="grad">work</span></h2>
+                </div>
+
+                <!-- Case study -->
+                <article class="case glass reveal">
+                    <div class="case-info">
+                        <span class="case-tag mono">01 — Internship · Enterprise AI · Full Stack</span>
+                        <h3 class="case-title">Enterprise AI Analytics Platform</h3>
+                        <p class="case-desc">
+                            Internal AI-powered analytics application that helps business users turn large volumes of
+                            data into clear, actionable insights through LLM-driven, agentic workflows.
+                        </p>
+
+                        <div class="case-flow">
+                            <div class="flow-item"><span class="mono">problem</span><p>Turning raw business data into timely, consistent insights was slow and manual.</p></div>
+                            <div class="flow-item"><span class="mono">solution</span><p>AI-assisted workflows that generate summaries &amp; insights, surfaced in interactive dashboards.</p></div>
+                            <div class="flow-item"><span class="mono">my role</span><p>Full-stack contributor across UI, APIs, AI workflows and deployment.</p></div>
+                        </div>
+
+                        <h4 class="mini-title">What I worked on</h4>
+                        <ul class="worked-list">
+                            <li>Interactive dashboard UI</li>
+                            <li>Python REST API endpoints</li>
+                            <li>Multi-step LLM agent workflows</li>
+                            <li>Frontend ↔ API integration</li>
+                            <li>Enterprise SSO authentication</li>
+                            <li>Cloud deployment &amp; debugging</li>
+                        </ul>
+
+                        <div class="chips">
+                            <span>React</span><span>Next.js</span><span>TypeScript</span><span>Python</span><span>REST APIs</span><span>LLMs</span><span>AI Agents</span><span>SQL</span><span>Cloud</span>
+                        </div>
+                        <p class="case-note mono"><i class="fa-solid fa-lock"></i> Internal project — names, data and system details intentionally omitted.</p>
+                    </div>
+
+                    <!-- Generic agentic AI pipeline (illustrative, not the internal system) -->
+                    <div class="arch" aria-label="Illustrative agentic AI pipeline">
+                        <div class="arch-title mono">agentic-pipeline.pattern</div>
+                        <div class="arch-node"><i class="fa-solid fa-user"></i> User question</div>
+                        <div class="arch-link"></div>
+                        <div class="arch-node accent-1"><i class="fa-solid fa-display"></i> Dashboard UI</div>
+                        <div class="arch-link"></div>
+                        <div class="arch-node"><i class="fa-solid fa-shield-halved"></i> Secure API layer</div>
+                        <div class="arch-link"></div>
+                        <div class="arch-node accent-2"><i class="fa-solid fa-diagram-project"></i> Orchestrator agent</div>
+                        <div class="arch-branch">
+                            <span class="arch-link"></span><span class="arch-link"></span><span class="arch-link"></span>
+                        </div>
+                        <div class="arch-row">
+                            <div class="arch-node sm"><i class="fa-solid fa-magnifying-glass"></i> Retrieve</div>
+                            <div class="arch-node sm accent-3"><i class="fa-solid fa-brain"></i> Reason</div>
+                            <div class="arch-node sm accent-1"><i class="fa-solid fa-file-lines"></i> Summarize</div>
+                        </div>
+                        <div class="arch-agent mono"><span class="pulse"></span> validated insights → dashboard</div>
+                    </div>
+                </article>
+
+                <div class="project-grid">
+                    <!-- Dashify -->
+                    <article class="project glass spotlight tilt reveal">
+                        <div class="shots" data-gallery="Dashify">
+                            <div class="shots-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">arpita-devlops.github.io/dashify-orbit</span></div>
+                            <button class="shots-stage" type="button" aria-label="Enlarge Dashify screenshots">
+                                <img src="projects/dashify-landing.jpg" width="1280" height="800" loading="lazy" data-caption="3D landing — closer orbit = higher priority" alt="Dashify landing page with a 3D task-orbit visual">
+                                <img src="projects/dashify-overview.jpg" width="1280" height="800" loading="lazy" data-caption="AI daily planner turns open tasks into a time-blocked plan" alt="Dashify overview with the AI daily planner, stats and productivity score">
+                                <img src="projects/dashify-tasks.jpg" width="1280" height="800" loading="lazy" data-caption="Smart Kanban board with natural-language quick add" alt="Dashify Kanban board with To do, In progress and Done columns">
+                                <img src="projects/dashify-team.jpg" width="1280" height="800" loading="lazy" data-caption="Distributed team: roles, presence, golden hours, live activity" alt="Dashify team workspace with members across time zones, golden hours and live activity">
+                                <span class="shots-caption mono"></span>
+                                <span class="shots-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+                            </button>
+                            <div class="shots-dots" aria-label="Choose screenshot"></div>
+                        </div>
+                        <div class="project-body">
+                            <span class="case-tag mono">02 — Full Stack · AI · Real-time</span>
+                            <h3>Dashify — AI Productivity Dashboard</h3>
+                            <p>AI daily planner and re-prioritization, a smart Kanban board, focus sessions and analytics behind a 3D landing page. Built for distributed teams with real-time sync, role-based workspaces, @mentions, time-zone “golden hours”, workload balancing and AI-written async standups.</p>
+                            <div class="chips">
+                                <span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Socket.IO</span><span>JWT</span><span>OpenAI API</span><span>Three.js</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/arpita-devlops/dashify-orbit" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+                                <a href="https://arpita-devlops.github.io/dashify-orbit/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CPU Scheduler -->
+                    <article class="project glass spotlight tilt reveal">
+                        <div class="shots" data-gallery="Greedy CPU Scheduling Lab">
+                            <div class="shots-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mono">arpita-devlops.github.io/cpu-scheduling-lab</span></div>
+                            <button class="shots-stage" type="button" aria-label="Enlarge Greedy CPU Scheduling Lab screenshots">
+                                <img src="projects/cpu-simulator.jpg" width="1280" height="800" loading="lazy" data-caption="Step through the CPU tick by tick — with the reason for every dispatch" alt="Simulator with ready queue, CPU chip, decision explanation and Gantt chart">
+                                <img src="projects/cpu-compare.jpg" width="1280" height="800" loading="lazy" data-caption="Every algorithm on the same workload, best values highlighted" alt="Comparison table of ten scheduling algorithms with mini Gantt charts">
+                                <img src="projects/cpu-benchmark.jpg" width="1280" height="800" loading="lazy" data-caption="Benchmark lab: 10,000 schedules computed in the browser" alt="Benchmark chart of average waiting time versus FCFS across 1,000 workloads">
+                                <img src="projects/cpu-hero.jpg" width="1280" height="800" loading="lazy" data-caption="Who gets the CPU next? C++ engine compiled to WebAssembly" alt="Greedy CPU Scheduling Lab home page with a live Gantt chart demo">
+                                <span class="shots-caption mono"></span>
+                                <span class="shots-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+                            </button>
+                            <div class="shots-dots" aria-label="Choose screenshot"></div>
+                        </div>
+                        <div class="project-body">
+                            <span class="case-tag mono">03 — Systems · C++ · WebAssembly</span>
+                            <h3>Greedy CPU Scheduling Lab</h3>
+                            <p>Modular C++17 engine for 10 scheduling algorithms — FCFS, SJF/SRT, Priority, Round Robin, HRRN, Feedback and Aging — compiled to WebAssembly. Step through a live CPU simulation with Gantt charts and the reason behind every decision, compare algorithms side by side, and benchmark thousands of workloads: SRT cuts average waiting by ~30% vs. FCFS.</p>
+                            <div class="chips">
+                                <span>C++17</span><span>STL</span><span>WebAssembly</span><span>JavaScript</span><span>CMake</span><span>Operating Systems</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/arpita-devlops/cpu-scheduling-lab" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+                                <a href="https://arpita-devlops.github.io/cpu-scheduling-lab/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section" id="skills" data-scene="galaxy">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-index mono">04</span>
+                    <h2 class="section-title">Technical <span class="grad">skills</span></h2>
+                </div>
+
+                <div class="bento">
+                    <div class="bento-card glass spotlight reveal span-2">
+                        <h3><i class="fa-solid fa-robot"></i> AI / LLM</h3>
+                        <div class="chips lg"><span>Azure OpenAI</span><span>OpenAI API</span><span>LangGraph</span><span>LangChain</span><span>Prompt Engineering</span><span>AI Agents</span></div>
+                    </div>
+                    <div class="bento-card glass spotlight reveal">
+                        <h3><i class="fa-solid fa-terminal"></i> Languages</h3>
+                        <div class="chips lg"><span>Java</span><span>Python</span><span>C++</span><span>JavaScript</span><span>TypeScript</span><span>SQL</span></div>
+                    </div>
+                    <div class="bento-card glass spotlight reveal">
+                        <h3><i class="fa-solid fa-display"></i> Frontend</h3>
+                        <div class="chips lg"><span>React</span><span>Next.js</span><span>HTML</span><span>CSS</span><span>Tailwind CSS</span></div>
+                    </div>
+                    <div class="bento-card glass spotlight reveal">
+                        <h3><i class="fa-solid fa-server"></i> Backend</h3>
+                        <div class="chips lg"><span>Node.js</span><span>Express.js</span><span>FastAPI</span><span>Django</span><span>REST APIs</span></div>
+                    </div>
+                    <div class="bento-card glass spotlight reveal">
+                        <h3><i class="fa-solid fa-database"></i> Databases</h3>
+                        <div class="chips lg"><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>Databricks SQL</span></div>
+                    </div>
+                    <div class="bento-card glass spotlight reveal span-2">
+                        <h3><i class="fa-solid fa-cloud"></i> Cloud &amp; DevOps</h3>
+                        <div class="chips lg"><span>Databricks</span><span>AWS</span><span>Docker</span><span>Git</span><span>GitHub Actions</span><span>Linux</span></div>
+                    </div>
+                    <div class="bento-card glass spotlight reveal span-2">
+                        <h3><i class="fa-solid fa-microchip"></i> Core CS</h3>
+                        <div class="chips lg"><span>Data Structures &amp; Algorithms</span><span>OOP</span><span>DBMS</span><span>Operating Systems</span><span>Computer Networks</span></div>
+                    </div>
+                    <div class="bento-card glass spotlight reveal exploring">
+                        <h3><i class="fa-solid fa-satellite-dish"></i> Currently exploring</h3>
+                        <p class="mono">Databricks · AI Agents · LLM Apps · System Design · Cloud Architecture</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACHIEVEMENTS -->
+        <section class="section" id="achievements" data-scene="knot">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-index mono">05</span>
+                    <h2 class="section-title">Achievements &amp; <span class="grad">credentials</span></h2>
+                </div>
+
+                <div class="achieve-grid">
+                    <div class="achieve glass spotlight tilt reveal highlight">
+                        <i class="fa-solid fa-trophy"></i>
+                        <div class="achieve-num">Top 0.5%</div>
+                        <div class="achieve-label">Flipkart GRiD 7.0 — National Semi-Finalist</div>
+                    </div>
+                    <div class="achieve glass spotlight tilt reveal">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <div class="achieve-num"><span data-count="1400" data-suffix="+">0</span></div>
+                        <div class="achieve-label">Codeforces rating</div>
+                    </div>
+                    <a class="achieve glass spotlight tilt reveal" href="https://www.codechef.com/users/arpita_0043" target="_blank" rel="noopener">
+                        <i class="fa-solid fa-star"></i>
+                        <div class="achieve-num">3★</div>
+                        <div class="achieve-label">CodeChef <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                    </a>
+                    <a class="achieve glass spotlight tilt reveal" href="https://www.geeksforgeeks.org/user/important06b7/" target="_blank" rel="noopener">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                        <div class="achieve-num"><span data-count="500" data-suffix="+">0</span></div>
+                        <div class="achieve-label">Problems · LeetCode / GFG <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                    </a>
+                </div>
+
+                <div class="cred-grid">
+                    <div class="cred-col reveal">
+                        <h3 class="sub-title mono">// certifications</h3>
+                        <ul class="cred-list">
+                            <li class="glass"><i class="fa-brands fa-aws"></i><span>AWS Certified Solutions Architect – Associate</span></li>
+                            <li class="glass"><i class="fa-brands fa-aws"></i><span>AWS Certified Cloud Practitioner</span></li>
+                            <li class="glass"><i class="fa-solid fa-leaf"></i><span>MongoDB Associate Developer</span></li>
+                            <li class="glass"><i class="fa-solid fa-leaf"></i><span>MongoDB Associate Database Administrator</span></li>
+                            <li class="glass"><i class="fa-solid fa-robot"></i><span>Robotic Process Automation (RPA) — Global Certification</span></li>
+                            <li class="glass"><i class="fa-brands fa-hackerrank"></i><span>HackerRank Software Engineer Certification</span><a href="https://www.hackerrank.com/profile/h2310030043" target="_blank" rel="noopener" aria-label="HackerRank profile"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+                            <li class="glass"><i class="fa-solid fa-language"></i><span>Cambridge Linguaskill</span></li>
+                        </ul>
+                    </div>
+                    <div class="cred-col reveal">
+                        <h3 class="sub-title mono">// education</h3>
+                        <div class="edu-card glass spotlight tilt">
+                            <div class="edu-top">
+                                <div class="edu-icon"><i class="fa-solid fa-building-columns"></i></div>
+                                <div>
+                                    <h4>KL University, Hyderabad</h4>
+                                    <p>B.Tech (Honors) — Computer Science &amp; Engineering, AI Specialization</p>
+                                </div>
+                            </div>
+                            <div class="edu-bottom">
+                                <span class="mono">2023 — 2027</span>
+                                <div class="cgpa">
+                                    <svg viewBox="0 0 120 120" class="ring">
+                                        <circle cx="60" cy="60" r="52" class="ring-bg"/>
+                                        <circle cx="60" cy="60" r="52" class="ring-fg" style="--p:0.986"/>
+                                    </svg>
+                                    <div class="cgpa-val"><strong>9.86</strong><span>CGPA</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section contact" id="contact" data-scene="core">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-index mono">06</span>
+                    <h2 class="section-title">Let's build <span class="grad">something</span></h2>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info reveal">
+                        <p class="lead">
+                            I'm interested in software engineering roles where I can work on scalable applications,
+                            AI-powered products and challenging engineering problems.
+                        </p>
+                        <button class="email-copy glass" id="email-copy" data-email="pandeyarpita371@gmail.com">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="mono">pandeyarpita371@gmail.com</span>
+                            <span class="copy-state"><i class="fa-regular fa-copy"></i></span>
+                        </button>
+                        <div class="contact-links">
+                            <a href="https://github.com/arpita-devlops" target="_blank" rel="noopener" class="glass"><i class="fa-brands fa-github"></i> GitHub</a>
+                            <a href="https://www.linkedin.com/in/arpita-pandey-1a38132a7/" target="_blank" rel="noopener" class="glass"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+                            <a href="Arpita_Pandey_Resume.pdf" class="glass" download><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+                        </div>
+                        <p class="muted mono small"><i class="fa-solid fa-location-dot"></i> Based in India · Open to SWE opportunities</p>
+                    </div>
+
+                    <form class="contact-form glass reveal" id="contact-form" novalidate>
+                        <div class="field">
+                            <input type="text" id="cf-name" name="name" placeholder=" " required maxlength="80">
+                            <label for="cf-name">Your name</label>
+                        </div>
+                        <div class="field">
+                            <input type="email" id="cf-email" name="email" placeholder=" " required maxlength="120">
+                            <label for="cf-email">Email</label>
+                        </div>
+                        <div class="field">
+                            <textarea id="cf-msg" name="message" rows="5" placeholder=" " required maxlength="2000"></textarea>
+                            <label for="cf-msg">What are we building?</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary magnetic full"><span>Send message</span><i class="fa-solid fa-paper-plane"></i></button>
+                        <p class="form-status mono" id="form-status" role="status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <span class="mono">© <span id="year"></span> Arpita Pandey</span>
+            <span class="mono muted">Designed &amp; built with three.js, vanilla JS and ☕</span>
+            <a href="#home" class="to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+    <dialog class="lightbox" id="lightbox" aria-label="Project screenshots">
+        <div class="lightbox-head">
+            <span class="lightbox-title"></span>
+            <span class="lightbox-count mono"></span>
+            <button class="lightbox-close" type="button" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <figure>
+            <img alt="">
+            <figcaption></figcaption>
+        </figure>
+        <button class="lightbox-nav prev" type="button" aria-label="Previous screenshot"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="lightbox-nav next" type="button" aria-label="Next screenshot"><i class="fa-solid fa-chevron-right"></i></button>
+    </dialog>
+
+    <script src="script.js?v=5"></script>
+</body>
+</html>
